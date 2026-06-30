@@ -1,4 +1,4 @@
-# Welcome to my Profile 👋
+# Welcome to my Profile !
 
 **AI for Sensing Systems · Digital Twins · World Models · Biomedical Signal Intelligence**
 
