@@ -18,6 +18,7 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 * **EEG / BCI & Human-state Decoding**
   Motor imagery classification, real-time EEG processing, cognitive-state modeling, and neural feedback systems.
+  ![Banner](pictures/镜像神经元原理.png)
 
 * **Biomedical & Wearable Sensing**
   Optical blood-flow monitoring, pulse-wave extraction, physiological signal processing, and portable sensing instruments.
