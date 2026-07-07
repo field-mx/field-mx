@@ -18,7 +18,7 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 * **EEG / BCI & Human-state Decoding**
   Motor imagery classification, real-time EEG processing, cognitive-state modeling, and neural feedback systems.
-  ![Banner](pictures/镜像神经元原理.png)
+
 
 * **Biomedical & Wearable Sensing**
   Optical blood-flow monitoring, pulse-wave extraction, physiological signal processing, and portable sensing instruments.
@@ -54,10 +54,10 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 ---
 
-### Industrial Hydrogen Digital Twin
+### [Industrial Hydrogen Digital Twin](https://github.com/field-mx/Sensor_Dashboard)
 
 **Multi-sensor state estimation and health monitoring for industrial systems**
-
+  ![Banner](pictures/镜像神经元原理.png)
 * Built a spatiotemporal prediction framework for a 61-channel industrial sensing system.
 * Studied sparse sensing, full-state reconstruction, and multi-sensor signal completion.
 * Designed early-warning logic based on residual analysis, trend monitoring, and health-state estimation.
