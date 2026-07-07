@@ -72,7 +72,11 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [Real-time EEG Three-class BCI System](https://github.com/field-mx/SE-EEGNet-Real-time-EEG-Three-Class-Classification-Model)
 
 **Real-time EEG decoding and online control**
-![Banner](pictures/系统流程图.jpg)
+<p align="center">
+  <img src="pictures/系统流程图.jpg" width="70%">
+</p>
+
+
 * Implemented a real-time EEG classification system based on SE-EEGNet.
 * Focused on online preprocessing, motor imagery classification, and real-time inference.
 * Integrated EEG decoding with device-side communication and control.
@@ -82,8 +86,11 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [EEG Training System with Visual Feedback](https://github.com/field-mx/EEG_TrainingSystemwithVisualFeedback)
 
 **Visual-feedback EEG training for motor imagery**
-  ![Banner](pictures/镜像神经元原理.png)
-   ![Banner](pictures/训练流程图.png)
+<p align="center">
+  <img src="pictures/镜像神经元原理.png" width="70%">
+  <img src="pictures/训练流程图.png" width="70%">
+</p>
+
 * Designed an EEG training platform with real-time visual feedback.
 * Explored mirror-neuron-inspired interaction for motor imagery training.
 * Implemented signal acquisition, feedback visualization, and user interaction modules.
@@ -93,9 +100,12 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [Wearable Blood-flow Monitoring System](https://github.com/field-mx/Blood_flow_testing_instruments)
 
 **Portable diffuse-speckle-based physiological sensing**
-  ![Banner](pictures/深度模拟.png)
-  ![Banner](pictures/滤波.png)
-  ![Banner](pictures/硬件2.png)
+<p align="center">
+  <img src="pictures/深度模拟.png" width="70%">
+  <img src="pictures/滤波.png" width="70%">
+  <img src="pictures/硬件2.png" width="70%">
+</p>
+
 * Developed a wearable optical sensing system for blood-flow and pulse-wave monitoring.
 * Implemented single-exposure pulse-wave extraction and multi-exposure flow-index estimation.
 * Combined hardware design, signal processing, and simulation analysis for biomedical instrumentation.
