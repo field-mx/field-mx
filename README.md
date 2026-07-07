@@ -22,6 +22,8 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 * **Biomedical & Wearable Sensing**
   Optical blood-flow monitoring, pulse-wave extraction, physiological signal processing, and portable sensing instruments.
+  ![Banner](pictures/硬件.png)
+  ![Banner](pictures/硬件2.png)
 
 * **Computer Vision for Measurement Systems**
   Image stitching, visual inspection, remote-sensing image classification, and vision-based sensing platforms.
