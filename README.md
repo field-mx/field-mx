@@ -22,13 +22,12 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 * **Biomedical & Wearable Sensing**
   Optical blood-flow monitoring, pulse-wave extraction, physiological signal processing, and portable sensing instruments.
-  ![Banner](pictures/硬件.png)
-  ![Banner](pictures/硬件2.png)
+
 
 
 * **Computer Vision for Measurement Systems**
   Image stitching, visual inspection, remote-sensing image classification, and vision-based sensing platforms.
-   ![Banner](pictures/硬件2.png)
+
 
 ---
 
@@ -57,7 +56,9 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [Industrial Hydrogen Digital Twin](https://github.com/field-mx/Sensor_Dashboard)
 
 **Multi-sensor state estimation and health monitoring for industrial systems**
-  ![Banner](pictures/镜像神经元原理.png)
+![Banner](pictures/建模.png)
+![Banner](pictures/电压-温度监控画面.png)
+![Banner](pictures/多传感器监控画面.png)
 * Built a spatiotemporal prediction framework for a 61-channel industrial sensing system.
 * Studied sparse sensing, full-state reconstruction, and multi-sensor signal completion.
 * Designed early-warning logic based on residual analysis, trend monitoring, and health-state estimation.
@@ -67,7 +68,7 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [Real-time EEG Three-class BCI System](https://github.com/field-mx/SE-EEGNet-Real-time-EEG-Three-Class-Classification-Model)
 
 **Real-time EEG decoding and online control**
-
+![Banner](pictures/系统流程图.jpg)
 * Implemented a real-time EEG classification system based on SE-EEGNet.
 * Focused on online preprocessing, motor imagery classification, and real-time inference.
 * Integrated EEG decoding with device-side communication and control.
@@ -77,7 +78,8 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [EEG Training System with Visual Feedback](https://github.com/field-mx/EEG_TrainingSystemwithVisualFeedback)
 
 **Visual-feedback EEG training for motor imagery**
-
+  ![Banner](pictures/镜像神经元原理.png)
+   ![Banner](pictures/训练流程图.png)
 * Designed an EEG training platform with real-time visual feedback.
 * Explored mirror-neuron-inspired interaction for motor imagery training.
 * Implemented signal acquisition, feedback visualization, and user interaction modules.
@@ -87,7 +89,9 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [Wearable Blood-flow Monitoring System](https://github.com/field-mx/Blood_flow_testing_instruments)
 
 **Portable diffuse-speckle-based physiological sensing**
-
+  ![Banner](pictures/深度模拟.png)
+  ![Banner](pictures/滤波.png)
+  ![Banner](pictures/硬件2.png)
 * Developed a wearable optical sensing system for blood-flow and pulse-wave monitoring.
 * Implemented single-exposure pulse-wave extraction and multi-exposure flow-index estimation.
 * Combined hardware design, signal processing, and simulation analysis for biomedical instrumentation.
