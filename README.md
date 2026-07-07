@@ -56,9 +56,13 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ### [Industrial Hydrogen Digital Twin](https://github.com/field-mx/Sensor_Dashboard)
 
 **Multi-sensor state estimation and health monitoring for industrial systems**
-![Banner](pictures/建模.png)
-![Banner](pictures/电压-温度监控画面.png)
-![Banner](pictures/多传感器监控画面.png)
+<p align="center">
+  <img src="pictures/建模.png" width="70%">
+  <img src="pictures/电压-温度监控画面.png" width="70%">
+  <img src="pictures/多传感器监控画面.png" width="70%">
+  
+</p>
+
 * Built a spatiotemporal prediction framework for a 61-channel industrial sensing system.
 * Studied sparse sensing, full-state reconstruction, and multi-sensor signal completion.
 * Designed early-warning logic based on residual analysis, trend monitoring, and health-state estimation.
