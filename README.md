@@ -33,23 +33,87 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 ## Selected Projects
 
-### [CIST-MAE](https://github.com/field-mx/CIST-MAE)
 
-**Spatiotemporal physical-field learning for complex sensing scenarios**
+### 🦾 [LeWorldModel — Long-Horizon Robotic Manipulation](https://github.com/field-mx/LeWm_Saimo)
 
-* Developed a masked modeling framework for learning spatiotemporal representations from physical-field data.
-* Focused on multi-channel reconstruction, sparse sensing, and physical-field pattern learning.
-* Explored the use of self-supervised learning for complex measurement and sensing systems.
+Extended a short-horizon **Joint-Embedding Predictive World Model (LeWM)** to long-horizon robotic cube grasping and transfer—without retraining the world model.
 
----
+- Identified that final-goal latent distance is non-monotonic during long-horizon manipulation, causing the original CEM planner to become trapped in local optima.
+<p align="center">
+  <img src="./assets/actor分析.gif" alt="latent驱动信号逐帧分析">
+</p>
 
-### [LeWorldModel Reproduction](https://github.com/field-mx/le-wm)
+- Developed **Proprio V2**, combining a frozen LeWM with 6D robot proprioception, an `ALIGN → GRASP → TRANSFER` state machine, actor-guided MPC, value estimation, and uncertainty-aware candidate scoring.
+- Built a closed-loop planner that evaluates 96 candidate action sequences and replans after every real action using only RGB observations and robot proprioception.
+- Trained on 64 successful teacher trajectories (3,007 frames) and achieved **7/10 grasp-to-transfer confirmations** and **4/10 end-to-end task successes**, with **31.7 ms average LeWM inference time**.
 
-**Lightweight world model reproduction and extension**
+<h2 align="center">Before</h2>
+<p align="center">
+  <img src="./assets/改造前.gif" alt="latent差驱动cem规划">
+</p>
 
-* Reproduced and studied LeWM-style action-conditioned world models.
-* Focused on joint-embedding predictive architecture, latent-space dynamics, and efficient world model training.
-* Exploring physics-aware extensions for simulation-based prediction and decision-making.
+<h2 align="center">After</h2>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./assets/0.gif" width="150" alt="Experiment 1">
+      <br>
+      <strong>Experiment 1</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/1.gif" width="150" alt="Experiment 2">
+      <br>
+      <strong>Experiment 2</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/2.gif" width="150" alt="Experiment 3">
+      <br>
+      <strong>Experiment 3</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/3.gif" width="150" alt="Experiment 4">
+      <br>
+      <strong>Experiment 4</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/4.gif" width="150" alt="Experiment 5">
+      <br>
+      <strong>Experiment 5</strong>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <img src="./assets/5.gif" width="150" alt="Experiment 6">
+      <br>
+      <strong>Experiment 6</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/6.gif" width="150" alt="Experiment 7">
+      <br>
+      <strong>Experiment 7</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/7.gif" width="150" alt="Experiment 8">
+      <br>
+      <strong>Experiment 8</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/8.gif" width="150" alt="Experiment 9">
+      <br>
+      <strong>Experiment 9</strong>
+    </td>
+    <td align="center">
+      <img src="./assets/9.gif" width="150" alt="Experiment 10">
+      <br>
+      <strong>Experiment 10</strong>
+    </td>
+  </tr>
+</table>
+
+
+`World Models` · `Model Predictive Control` · `Robot Manipulation` · `Joint-Embedding Prediction` · `MuJoCo` · `Python`
 
 ---
 
