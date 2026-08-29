@@ -33,6 +33,39 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 ## Selected Projects
 
+### 🎬 [Masked Visual Actions — Robot Video Generation](https://github.com/field-mx/masked-visual-actions)
+
+Reproduced the **Masked Visual Actions** robot video generation pipeline using **Wan2.2-Fun-A14B-Control**, dual LoRA adapters, and robot trajectories generated from LeWM/OGBench.
+<h2 align="center">Input image and masked video</h2>
+<table>
+  <tr>
+    <td align="center">
+      <img src="./assets/action.gif" width="400">
+    </td>
+    <td align="center">
+      <img src="./assets/initial_actor_first_frame.png" width="400">
+    </td>
+  </tr>
+</table>
+
+<h2 align="center">Output video</h2>
+<table>
+  <tr>
+    <td align="center">
+      <img src="./assets/2round_denoisy.gif" width="500">
+    </td>
+    <td align="center">
+      <img src="./assets/5rounds_denoisy.gif" width="400">
+    </td>
+  </tr>
+</table>
+
+- Built an inference pipeline conditioned on a **dynamic robot mask**, a first-frame reference image, and a text instruction.
+- Converted UR5e manipulation trajectories into visual action controls for generating temporally consistent robot videos.
+- Reproduced **480 × 480, 81-frame** video generation and evaluated fast-preview and standard 50-step denoising configurations.
+- Stress-tested the model on complex and high-speed dexterous manipulation, revealing limitations in physical consistency, motion reasoning, and hallucination control.
+
+`Video World Models` · `Diffusion Models` · `Masked Visual Actions` · `LoRA` · `Robot Manipulation` · `Wan2.2`
 
 ### 🦾 [LeWorldModel — Long-Horizon Robotic Manipulation](https://github.com/field-mx/LeWm_Saimo)
 
