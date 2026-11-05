@@ -153,19 +153,27 @@ Reproduced the **Masked Visual Actions** robot video generation pipeline using *
 
 ---
 
-### [Industrial Hydrogen Digital Twin](https://github.com/field-mx/Sensor_Dashboard)
+### [Industrial Hydrogen Monitoring Dashboard & Digital Twin](https://github.com/field-mx/Sensor_Dashboard/tree/work_with_collector)
 
-**Multi-sensor state estimation and health monitoring for industrial systems**
+**Real-time multi-sensor monitoring and interactive visualization for electrolyzers**
+
+Built a Python desktop dashboard with three views: **Process Overview**, **Cell Voltage Monitoring**, and **Digital Twin**.
+
 <p align="center">
-  <img src="pictures/建模.png" width="70%">
-  <img src="pictures/电压-温度监控画面.png" width="70%">
-  <img src="pictures/多传感器监控画面.png" width="70%">
-  
+  <img src="pictures/建模.png" width="70%" alt="Electrolyzer 3D schematic with interactive sensor locations">
+  <img src="pictures/电压-温度监控画面.png" width="70%" alt="16-channel cell voltage and PT100 temperature monitoring interface">
+  <img src="pictures/多传感器监控画面.png" width="70%" alt="Six-sensor process overview with readings, status indicators, and trend charts">
 </p>
 
-* Built a spatiotemporal prediction framework for a 61-channel industrial sensing system.
-* Studied sparse sensing, full-state reconstruction, and multi-sensor signal completion.
-* Designed early-warning logic based on residual analysis, trend monitoring, and health-state estimation.
+* **Process overview:** six sensor cards covering oxygen, hydrogen, two temperature inputs, and two pressure inputs, with status indicators and rolling trends.
+* **Voltage and temperature monitoring:** 16 channels with expandable plots, voltage/temperature switching, and threshold-based color indicators.
+* **Interactive 3D visualization:** a schematic electrolyzer model with six clickable sensor locations and support for externally supplied warnings and operating recommendations.
+* **Hardware integration:** threaded UDP/TCP reception, AD7616 channel mapping, PT100/AI parsing, and gas-concentration conversion, with a built-in mock mode for demonstrations.
+* **Excel recording:** user-selected files, start/stop controls, and background saving of voltage, temperature, and six-channel process data.
+
+[User Guide](https://github.com/field-mx/Sensor_Dashboard/blob/work_with_collector/docs/02_用户操作指南.md) · [Code Overview](https://github.com/field-mx/Sensor_Dashboard/blob/work_with_collector/docs/01_代码说明.md)
+
+`Python` · `PyQt6` · `pyqtgraph` · `OpenGL` · `UDP/TCP` · `Multi-sensor Monitoring` · `Excel`
 
 ---
 
