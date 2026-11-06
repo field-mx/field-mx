@@ -153,6 +153,44 @@ Reproduced the **Masked Visual Actions** robot video generation pipeline using *
 
 ---
 
+### [PhysicsRelationCTF — Physics-Guided Forecasting for Electrolyzer Monitoring](https://github.com/field-mx/PhysicsRelationCTF)
+
+**From sensor measurements to future operating trends: forecasting support for fault early warning.**
+
+Industrial electrolyzers generate coupled electrical, thermal, pressure, flow, and gas-composition signals. Forecasting these signals can provide advance information for anomaly assessment and fault early warning, but complete equipment parameters and dynamic equations are often unavailable. This project asks how the physical knowledge that is available can still improve prediction.
+
+Developed **PhysicsRelationCTF (PRCTF)**, which enhances **ChannelTokenFormer (CTF)** through two complementary interfaces while retaining its masked attention and channel-token decoder:
+
+- **Structural guidance:** map sparse, directed physical relationships to channel-attention biases, guiding information exchange while preserving data-driven learning of unknown dependencies.
+- **Equation-informed content:** compute reference features from historical measurements, such as electrical power and Faradaic gas-generation references, and inject their encoded messages into attention aggregation. Data-driven attention and a lightweight residual branch learn unmodeled dynamics.
+
+<p align="center">
+  <a href="https://github.com/field-mx/PhysicsRelationCTF">
+    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/architecture/model_architecture.png" width="100%" alt="PRCTF model overview: physical topology guides channel attention, equation-derived messages enrich predictive representations, and channel tokens decode future sensor trajectories">
+  </a>
+</p>
+
+**Industrial task:** use **96 seconds of history to forecast the next 96 seconds across 56 monitoring channels**. Three fixed-seed comparisons against Original CTF show:
+
+| Evaluation setting | Role | Mean normalized MSE reduction | Best paired-seed reduction |
+|---|---|---:|---:|
+| Real industrial alkaline electrolyzer | Application evaluation | **0.393%** | **1.275%** |
+| LBNL simulated chiller plant | Physical-module numerical validation | **0.778%** | **2.588%** |
+| Tennessee Eastman Process | Physical-module numerical validation | **0.712%** | **0.760%** |
+
+Mean reductions use seeds 42, 43, and 44; the best paired-seed result is reported separately. Each system uses its own physical relationships and is trained independently. The experiments evaluate forecasting accuracy; predictions can serve as inputs to downstream warning logic.
+
+**Deployment:** released trained reference weights, fitted normalization/calibration, and CPU/CUDA inference tools for all three systems. The implementation returns forecasts in physical measurement units without requiring retraining.
+
+[Code & Results](https://github.com/field-mx/PhysicsRelationCTF) · [Pretrained Weights](https://github.com/field-mx/PhysicsRelationCTF/tree/main/weights) · [Deployment Guide](https://github.com/field-mx/PhysicsRelationCTF/blob/main/weights/README.md)
+
+**Paper / Preprint:** Public link to be added.
+<!-- PRCTF_PAPER_LINK: Replace the placeholder above with [Paper](PUBLIC_PAPER_URL) when the manuscript is publicly available. -->
+
+`Physics-Guided AI` · `Multivariate Forecasting` · `Channel Attention` · `Industrial Sensors` · `PyTorch`
+
+---
+
 ### [Industrial Hydrogen Monitoring Dashboard & Digital Twin](https://github.com/field-mx/Sensor_Dashboard/tree/work_with_collector)
 
 **Real-time multi-sensor monitoring and interactive visualization for electrolyzers**
