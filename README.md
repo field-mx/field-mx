@@ -191,27 +191,31 @@ Mean reductions use seeds 42, 43, and 44; the best paired-seed result is reporte
 
 ---
 
-### [Industrial Hydrogen Monitoring Dashboard & Digital Twin](https://github.com/field-mx/Sensor_Dashboard/tree/work_with_collector)
+### [Electrolyzer AI Monitoring — Desktop UI & On-device Model Orchestration](https://github.com/field-mx/Sensor_Dashboard)
 
-**Real-time multi-sensor monitoring and interactive visualization for electrolyzers**
+**Designing the monitoring front end and the local model workflow, from measurements to forecasts and model updates.**
 
-Built a Python desktop dashboard with three views: **Process Overview**, **Cell Voltage Monitoring**, and **Digital Twin**.
+Built a **PyQt6 desktop application** that connects multi-sensor data, an interactive 3D equipment view, rolling forecasts, and residual alerts. A **FastAPI + PyTorch** backend runs inference and fine-tuning on the user's Windows PC using CPU.
+
+- **Monitoring interface design:** coordinated process overview, trend/forecast plots, 3D structure, and model-update views; measurement selection links the table to its curve, with external plot legends and visible service, version, and task states. The current 3D scene is schematic; sensor coordinates remain uncalibrated.
+- **Asynchronous model integration:** call the local model service without blocking the UI; align 96-second histories with the next 96 forecast points across 56 channels, handle timeouts and reconnection, and discard stale responses after a reset or version change.
+- **On-device resource scheduling:** serialize model access, run fine-tuning in a separate worker process, and share a lock between manual and daily jobs. Inference pauses during training while the interface remains responsive.
+- **Model lifecycle:** validate imported normal Excel, partition windows chronologically, show real training progress/loss, evaluate candidates, then activate or roll back. Daily training is optional, persistent, and deduplicates previously processed data; it does not automatically activate candidates.
+- **Deployment and interaction:** provide `Setup.cmd` and `StartDemo.cmd` for the complete offline delivery, plus play/pause/reset/speed controls, residual-based upward/downward fault demonstrations, and event-history export.
 
 <p align="center">
-  <img src="pictures/建模.png" width="70%" alt="Electrolyzer 3D schematic with interactive sensor locations">
-  <img src="pictures/电压-温度监控画面.png" width="70%" alt="16-channel cell voltage and PT100 temperature monitoring interface">
-  <img src="pictures/多传感器监控画面.png" width="70%" alt="Six-sensor process overview with readings, status indicators, and trend charts">
+  <img src="https://raw.githubusercontent.com/field-mx/Sensor_Dashboard/main/docs/images/modelshowing.gif" width="800" alt="Electrolyzer 3D structure and synchronized measurement data">
 </p>
 
-* **Process overview:** six sensor cards covering oxygen, hydrogen, two temperature inputs, and two pressure inputs, with status indicators and rolling trends.
-* **Voltage and temperature monitoring:** 16 channels with expandable plots, voltage/temperature switching, and threshold-based color indicators.
-* **Interactive 3D visualization:** a schematic electrolyzer model with six clickable sensor locations and support for externally supplied warnings and operating recommendations.
-* **Hardware integration:** threaded UDP/TCP reception, AD7616 channel mapping, PT100/AI parsing, and gas-concentration conversion, with a built-in mock mode for demonstrations.
-* **Excel recording:** user-selected files, start/stop controls, and background saving of voltage, temperature, and six-channel process data.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/field-mx/Sensor_Dashboard/main/docs/images/forecast.gif" width="800" alt="Rolling on-device AI forecasts and residual alerts">
+</p>
 
-[User Guide](https://github.com/field-mx/Sensor_Dashboard/blob/work_with_collector/docs/02_用户操作指南.md) · [Code Overview](https://github.com/field-mx/Sensor_Dashboard/blob/work_with_collector/docs/01_代码说明.md)
+*The presentation replays Excel history to simulate live acquisition; inference and residual alerts execute locally. The forecasting algorithm and released weights are maintained separately in [PhysicsRelationCTF](https://github.com/field-mx/PhysicsRelationCTF).*
 
-`Python` · `PyQt6` · `pyqtgraph` · `OpenGL` · `UDP/TCP` · `Multi-sensor Monitoring` · `Excel`
+[Project & setup](https://github.com/field-mx/Sensor_Dashboard) · [English README](https://github.com/field-mx/Sensor_Dashboard/blob/main/README.en.md) · [Operation guide](https://github.com/field-mx/Sensor_Dashboard/blob/main/docs/操作指南.md)
+
+`Desktop UI Design` · `PyQt6` · `pyqtgraph/OpenGL` · `FastAPI` · `PyTorch` · `On-device AI` · `Model Orchestration` · `Time-series Forecasting`
 
 ---
 
