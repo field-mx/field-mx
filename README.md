@@ -10,8 +10,8 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 ## Research Interests
 
-* **World Models & Physics-aware AI**
-  Latent-space prediction, action-conditioned dynamics, physical constraint integration, and simulation-based learning.
+* **Physical A & IWorld Models**
+  Committed to integrating the real physical world into AI, promoting the creation of a learnable, reusable, and evolvable digital world, and helping AGI arrive sooner!
 
 * **Digital Twins & Multi-sensor Modeling**
   Sparse sensing, spatiotemporal reconstruction, anomaly detection, health-state estimation, and industrial system modeling.
