@@ -10,7 +10,7 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 
 ## Research Interests
 
-* **Physical A & IWorld Models**
+* **Physical AI & IWorld Models**
 
   Committed to integrating the real physical world into AI, promoting the creation of a learnable, reusable, and evolvable digital world, and helping AGI arrive sooner!
 
