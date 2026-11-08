@@ -187,6 +187,16 @@ Mean reductions use seeds 42, 43, and 44; the best paired-seed result is reporte
 
 **Deployment:** released trained reference weights, fitted normalization/calibration, and CPU/CUDA inference tools for all three systems. The implementation returns forecasts in physical measurement units without requiring retraining.
 
+**Rolling prediction example — instrument-air header pressure**
+
+<p align="center">
+  <a href="https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/lowpass_test_predictions.pdf">
+    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/industrial/lowpass_test_predictions.png?v=mean12-20261109" width="100%" alt="Instrument-air header pressure forecasts: PRCTF and Original CTF with 12-second rolling updates and equal-weight overlapping forecasts">
+  </a>
+</p>
+
+*Selected panel C from a separate seed-42 low-pass experiment: forecasts are updated every 12 s and combined with equal weights. The figure shows all 4847 test points; MSE is evaluated on the same 4751 points after the shaded 96 s warm-up, giving a 2.12% reduction for PRCTF. Forecast leads are mixed from 1–96 s; this illustration is separate from the three-seed benchmark above.*
+
 [Code & Results](https://github.com/field-mx/PhysicsRelationCTF) · [Pretrained Weights](https://github.com/field-mx/PhysicsRelationCTF/tree/main/weights) · [Deployment Guide](https://github.com/field-mx/PhysicsRelationCTF/blob/main/weights/README.md)
 
 **Paper / Preprint:** Public link to be added.
