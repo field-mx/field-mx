@@ -11,21 +11,26 @@ My interests lie in developing AI models that can understand, reconstruct, and p
 ## Research Interests
 
 * **Physical A & IWorld Models**
+
   Committed to integrating the real physical world into AI, promoting the creation of a learnable, reusable, and evolvable digital world, and helping AGI arrive sooner!
 
 * **Digital Twins & Multi-sensor Modeling**
+
   Sparse sensing, spatiotemporal reconstruction, anomaly detection, health-state estimation, and industrial system modeling.
 
 * **EEG / BCI & Human-state Decoding**
+
   Motor imagery classification, real-time EEG processing, cognitive-state modeling, and neural feedback systems.
 
 
 * **Biomedical & Wearable Sensing**
+
   Optical blood-flow monitoring, pulse-wave extraction, physiological signal processing, and portable sensing instruments.
 
 
 
 * **Computer Vision for Measurement Systems**
+
   Image stitching, visual inspection, remote-sensing image classification, and vision-based sensing platforms.
 
 
