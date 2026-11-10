@@ -187,15 +187,21 @@ Mean reductions use seeds 42, 43, and 44; the best paired-seed result is reporte
 
 **Deployment:** released trained reference weights, fitted normalization/calibration, and CPU/CUDA inference tools for all three systems. The implementation returns forecasts in physical measurement units without requiring retraining.
 
-**Rolling prediction example — instrument-air header pressure**
+**Prediction examples — hydrogen outlet flow and instrument-air pressure**
 
 <p align="center">
   <a href="https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/lowpass_test_predictions.pdf">
-    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/industrial/lowpass_test_predictions.png?v=mean12-20261109" width="100%" alt="Instrument-air header pressure forecasts: PRCTF and Original CTF with 12-second rolling updates and equal-weight overlapping forecasts">
+    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/industrial/lowpass_test_predictions.png?v=flow96-pressure-weighted24-20261110" width="100%" alt="PRCTF versus CTF: hydrogen outlet flow using direct 96-second forecast blocks, and instrument-air pressure using validation-weighted overlapping forecasts with a minimum 24-second lead">
   </a>
 </p>
 
-*Selected panel C from a separate seed-42 low-pass experiment: forecasts are updated every 12 s and combined with equal weights. The figure shows all 4847 test points; MSE is evaluated on the same 4751 points after the shaded 96 s warm-up, giving a 2.12% reduction for PRCTF. Forecast leads are mixed from 1–96 s; this illustration is separate from the three-seed benchmark above.*
+**PRCTF has lower full-test MSE in both channel/policy examples:** **23.78%** lower for hydrogen outlet flow and **0.62%** lower for instrument-air pressure. In the flow transition, PRCTF reduces CTF's sustained overprediction.
+
+- **Top — hydrogen outlet flow (FT010304):** directly concatenate complete 96 s forecasts, updated every 96 s. The image shows the selected first 960 s; [the full-test flow plot is also available](https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/flow_block96_detail_and_full.pdf).
+- **Bottom — instrument-air header pressure (PT010003):** selected panel C of the matched-minimum-lead comparison. Update every 12 s and combine lead-24–96 s forecasts using each model's inverse validation-MSE weights, rather than equal weights. All 4847 test observations are shown.
+
+*These are separate seed-42 causal-low-pass illustrations, not the original-data three-seed benchmark above. Both full-region scores use the same 4751 targets after the first 96 s; the flow score is not limited to the displayed 960 s. CTF and PRCTF use the same policy within each panel. The two policies have different lead times, no time shifts or extra smoothing are applied, and the gains do not imply improvement on every channel.*
+
 
 [Code & Results](https://github.com/field-mx/PhysicsRelationCTF) · [Pretrained Weights](https://github.com/field-mx/PhysicsRelationCTF/tree/main/weights) · [Deployment Guide](https://github.com/field-mx/PhysicsRelationCTF/blob/main/weights/README.md)
 
