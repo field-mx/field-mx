@@ -208,6 +208,8 @@ Developed **PhysicsRelationCTF (PRCTF)**, which enhances **ChannelTokenFormer (C
 *These are separate seed-42 causal-low-pass illustrations, not the original-data three-seed benchmark above. Both full-region scores use the same 4751 targets after the first 96 s; the flow score is not limited to the displayed 960 s. CTF and PRCTF use the same policy within each panel. The two policies have different lead times, no time shifts or extra smoothing are applied, and the gains do not imply improvement on every channel.*
 
 
+**All-channel attachment:** [View / download the 56-page observations-and-PRCTF PDF](https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/all_56_channels_truth_PRCTF_full_test.pdf). One channel per page, with the complete filtered test timeline. The attachment uses **24 s rolling updates and validation-weighted overlap over leads 1–96 s**; only filtered observations and PRCTF are plotted. This policy differs from the two examples above.
+
 [Code & Results](https://github.com/field-mx/PhysicsRelationCTF) · [Pretrained Weights](https://github.com/field-mx/PhysicsRelationCTF/tree/main/weights) · [Deployment Guide](https://github.com/field-mx/PhysicsRelationCTF/blob/main/weights/README.md)
 
 **Paper / Preprint:** Public link to be added.
