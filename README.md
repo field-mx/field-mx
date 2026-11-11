@@ -175,15 +175,20 @@ Developed **PhysicsRelationCTF (PRCTF)**, which enhances **ChannelTokenFormer (C
   </a>
 </p>
 
-**Industrial task:** use **96 seconds of history to forecast the next 96 seconds across 56 monitoring channels**. Three fixed-seed comparisons against Original CTF show:
+**Industrial task:** use **96 seconds of history to forecast the next 96 seconds across 56 monitoring channels**. The paper compares PRCTF with four forecasting baselines on the industrial alkaline-electrolyzer dataset:
 
-| Evaluation setting | Role | Mean normalized MSE reduction | Best paired-seed reduction |
-|---|---|---:|---:|
-| Real industrial alkaline electrolyzer | Application evaluation | **0.393%** | **1.275%** |
-| LBNL simulated chiller plant | Physical-module numerical validation | **0.778%** | **2.588%** |
-| Tennessee Eastman Process | Physical-module numerical validation | **0.712%** | **0.760%** |
+| Model | MSE Mean | MSE Best | MAE Mean | MAE Best | Recorded training time (s) |
+|---|---:|---:|---:|---:|---:|
+| Original CTF | 0.10901 | 0.10859 | 0.10809 | 0.10796 | 514.1 |
+| MTGNN | 0.11012 | 0.10974 | 0.10800 | 0.10701 | 182.2 |
+| PatchTST | 0.11145 | 0.11076 | 0.11124 | 0.11022 | 89.2 |
+| PhyGNN adapted | 0.14649 | 0.14365 | 0.18030 | 0.17610 | **69.8** |
+| **PRCTF (ours)** | **0.10858** | **0.10773** | **0.10776** | **0.10695** | 615.2 |
 
-Mean reductions use seeds 42, 43, and 44; the best paired-seed result is reported separately. Each system uses its own physical relationships and is trained independently. The experiments evaluate forecasting accuracy; predictions can serve as inputs to downstream warning logic.
+**PRCTF achieves the lowest mean and best MSE/MAE among these five evaluated configurations.** Mean MSE is **0.393% lower than Original CTF, 1.398% lower than MTGNN, and 2.571% lower than PatchTST**.
+
+*MSE and MAE are normalized. Mean averages the three fixed seeds (42, 43, 44); Best is the minimum for each metric and need not come from the same seed. PhyGNN is adapted for forecasting rather than reproduced in its original task. Training times are archived averages, not a controlled hardware-efficiency benchmark. These original-data paper results are separate from the low-pass curve illustrations below.*
+
 
 **Deployment:** released trained reference weights, fitted normalization/calibration, and CPU/CUDA inference tools for all three systems. The implementation returns forecasts in physical measurement units without requiring retraining.
 
