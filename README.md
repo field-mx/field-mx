@@ -192,21 +192,48 @@ Developed **PhysicsRelationCTF (PRCTF)**, which enhances **ChannelTokenFormer (C
 
 **Deployment:** released trained reference weights, fitted normalization/calibration, and CPU/CUDA inference tools for all three systems. The implementation returns forecasts in physical measurement units without requiring retraining.
 
-**Prediction examples — hydrogen outlet flow and instrument-air pressure**
+**Figure 1 — Single-origin forecasts during selected dynamic changes**
+
+Electrolyzer records contain extended relatively steady portions, where model outputs can be similar. To examine local differences beyond aggregate MSE, the figure compares four selected intervals from three channels: hydrogen outlet flow, hydrogen-side stack outlet temperature 1, and hydrogen-minus-oxygen separator level. Operating-state labels are unavailable, so these are observed dynamic changes rather than confirmed regime switches.
 
 <p align="center">
-  <a href="https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/lowpass_test_predictions.pdf">
-    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/industrial/lowpass_test_predictions.png?v=flow96-pressure-weighted24-20261110" width="100%" alt="PRCTF versus CTF: hydrogen outlet flow using direct 96-second forecast blocks, and instrument-air pressure using validation-weighted overlapping forecasts with a minimum 24-second lead">
+  <a href="https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/selected_dynamic_intervals.pdf">
+    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/industrial/selected_dynamic_intervals.png" width="100%" alt="CTF and PRCTF single-origin forecasts: four selected 96-second intervals across three electrolyzer channels">
   </a>
 </p>
 
-**PRCTF has lower full-test MSE in both channel/policy examples:** **23.78%** lower for hydrogen outlet flow and **0.62%** lower for instrument-air pressure. In the flow transition, PRCTF reduces CTF's sustained overprediction.
+Both models receive the same **96 s history** and issue one complete **96 s forecast**, without within-horizon updates, overlap averaging, curve shifts or additional output smoothing. Gray shading marks the observed history.
 
-- **Top — hydrogen outlet flow (FT010304):** directly concatenate complete 96 s forecasts, updated every 96 s. The image shows the selected first 960 s; [the full-test flow plot is also available](https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/flow_block96_detail_and_full.pdf).
-- **Bottom — instrument-air header pressure (PT010003):** selected panel C of the matched-minimum-lead comparison. Update every 12 s and combine lead-24–96 s forecasts using each model's inverse validation-MSE weights, rather than equal weights. All 4847 test observations are shown.
+In these selected intervals, **PRCTF reduces MSE by 62.43–88.79% and TDI by 36.16–91.85%**. The two temperature intervals show TDI reductions of 91.85% and 88.26%. **TDI (Temporal Distortion Index)** measures temporal mismatch along the optimal DTW alignment path; lower values indicate better timing, rather than a delay measured in seconds:
 
-*These are separate seed-42 causal-low-pass illustrations, not the original-data three-seed benchmark above. Both full-region scores use the same 4751 targets after the first 96 s; the flow score is not limited to the displayed 960 s. CTF and PRCTF use the same policy within each panel. The two policies have different lead times, no time shifts or extra smoothing are applied, and the gains do not imply improvement on every channel.*
+```math
+\mathrm{TDI}=\frac{1}{H^2}\sum_{(i,j)\in\pi^\ast}(i-j)^2,\qquad H=96.
+```
 
+| Panel / channel | Forecast interval (s) | CTF MSE | PRCTF MSE | MSE reduction | CTF TDI | PRCTF TDI | TDI reduction |
+|---|---|---:|---:|---:|---:|---:|---:|
+| (a) Hydrogen outlet flow | [96, 192) | 4845.62 | **1236.08** | **74.49%** | 12.3120 | **7.8606** | **36.16%** |
+| (b) Hydrogen-side stack outlet temperature 1 | [1824, 1920) | 0.021868 | **0.002451** | **88.79%** | 14.2852 | **1.1644** | **91.85%** |
+| (c) Hydrogen-side stack outlet temperature 1 | [1920, 2016) | 0.038945 | **0.008597** | **77.92%** | 28.9741 | **3.4002** | **88.26%** |
+| (d) Hydrogen-minus-oxygen separator level | [192, 288) | 0.501295 | **0.188319** | **62.43%** | 2.7002 | **1.5739** | **41.71%** |
+
+[Local interval metrics](https://github.com/field-mx/PhysicsRelationCTF/blob/main/results/selected_dynamic_intervals.csv). Reductions are `(CTF error − PRCTF error) / CTF error × 100%`.
+
+MSE uses `(m³/h)²`, `°C²` and `mm²` for the respective channels; positive reductions mean lower PRCTF error. These are post hoc illustrative cases, not an event-wide benchmark. Aggregate performance is evaluated by the three-seed results above; component comparisons separately assess the physical interfaces. [TDI reference](https://papers.nips.cc/paper_files/paper/2019/hash/466accbac9a66b805ba50e42ad715740-Abstract.html).
+
+**Figure 2 — PRCTF rolling prediction as an application example**
+
+<p align="center">
+  <a href="https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/rolling_prediction_application.pdf">
+    <img src="https://raw.githubusercontent.com/field-mx/PhysicsRelationCTF/main/figures/industrial/rolling_prediction_application.png" width="100%" alt="PRCTF-only rolling forecasts over test seconds 0 to 2880, with validation-weighted overlap fusion and causal low-pass output filtering">
+  </a>
+</p>
+
+PRCTF uses **96 s of history to forecast 96 s**, updates every **12 s**, and combines all lead-1–96 s forecasts covering each timestamp using validation-error weights shared with CTF. A second-order causal Butterworth filter (**0.05 Hz cutoff, 1 Hz sampling**) is then applied to the fused PRCTF output. The figure shows **test seconds 0–2880**, not the entire 4847-point test set. Gray/yellow boxes and labels (a)–(d) locate the corresponding cases in Figure 1; rolling updates continue outside those boxes.
+
+This second figure illustrates continuous operation with updating and postprocessing, **not superiority over CTF or fixed-96-second-ahead accuracy**. The metrics in the table refer only to Figure 1.
+
+*Both figures use a separate seed-42 experiment whose Train/Validation/Test observations were already causally low-pass filtered. Only Figure 2 adds output filtering. These illustrations are distinct from the original-data three-seed benchmark and released reference weights.*
 
 **All-channel attachment:** [View / download the 56-page observations-and-PRCTF PDF](https://github.com/field-mx/PhysicsRelationCTF/blob/main/figures/industrial/all_56_channels_truth_PRCTF_full_test.pdf). One channel per page, with the complete filtered test timeline. The attachment uses **24 s rolling updates and validation-weighted overlap over leads 1–96 s**; only filtered observations and PRCTF are plotted. This policy differs from the two examples above.
 
